@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of employeeList; index as i">
+      <th scope="row">{{i+1}}</th>
+      <td>{{emp.firstName}}</td>
+      <td>{{emp.lastName}}</td>
+      <td>{{emp.email}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  employeeMgmtService: {
+    host: 'localhost',
+    port: 3000,
+    apiPrefix: '/api/user/auth-service',
+    getAll: '/getAll',
+    getAllEmployees: '/getAllEmployees'
+  }
 };
 
 /*
