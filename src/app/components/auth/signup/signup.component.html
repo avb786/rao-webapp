@@ -14,20 +14,20 @@
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                   <input type="text" formControlName="firstName" id="first_name" class="form-control input-sm" placeholder="First Name">
-                  <small class="text-danger" *ngIf="myReactiveForm.get('firstName')?.errors?.required && myReactiveForm.get('firstName')?.touched">First Name is required</small>
+                  <small class="text-danger" *ngIf="myReactiveForm.get('firstName')?.errors?.required && myReactiveForm.get('firstName')?.touched || myReactiveForm.get('firstName')?.errors?.required && submitted">First Name is required</small>
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                   <input type="text" formControlName="lastName" id="last_name" class="form-control input-sm" placeholder="Last Name">
-                  <small class="text-danger" *ngIf="myReactiveForm.get('lastName')?.errors?.required && myReactiveForm.get('lastName')?.touched">Last Name is required</small>
+                  <small class="text-danger" *ngIf="myReactiveForm.get('lastName')?.errors?.required && myReactiveForm.get('lastName')?.touched || myReactiveForm.get('lastName')?.errors?.required && submitted">Last Name is required</small>
                 </div>
               </div>
 
 
               <div class="form-group col-md-12">
                 <input type="email" formControlName="email" id="email" class="form-control input-sm" placeholder="Email Address">
-                <small class="text-danger" *ngIf="myReactiveForm.get('email')?.errors?.required && myReactiveForm.get('email')?.touched">Email is required</small>
+                <small class="text-danger" *ngIf="myReactiveForm.get('email')?.errors?.required && myReactiveForm.get('email')?.touched || myReactiveForm.get('email')?.errors?.required && submitted">Email is required</small>
                 <small class="text-danger" *ngIf="myReactiveForm.get('email')?.errors?.email && myReactiveForm.get('email')?.touched">Please Enter correct Email Address</small>
               </div>
 
@@ -39,26 +39,37 @@
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                   <input type="password" formControlName="password" id="password" class="form-control input-sm" placeholder="Password">
-                  <span class="text-danger" *ngIf="myReactiveForm.get('password')?.touched && myReactiveForm.get('password')?.errors?.required">
+                  <small class="text-danger" *ngIf=" myReactiveForm.get('password')?.touched && myReactiveForm.get('password')?.errors?.required
+                  || myReactiveForm.get('password')?.errors?.required && submitted">
                     Password is required
-                  </span>
-                  <span class="text-danger" *ngIf="myReactiveForm.get('password')?.errors?.invalidPassword">
+                  </small>
+                  <small class="text-danger" *ngIf="myReactiveForm.get('password')?.errors?.invalidPassword">
                     Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number
-                  </span>
+                  </small>
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                   <input type="password" formControlName="confirmPassword" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
-                  <span class="text-danger" *ngIf="(myReactiveForm.get('confirmPassword')?.touched)&& myReactiveForm.get('confirmPassword').errors?.required">
+                  <small class="text-danger" *ngIf="(myReactiveForm.get('confirmPassword')?.touched)&& myReactiveForm.get('confirmPassword').errors?.required
+                  || myReactiveForm.get('confirmPassword').errors?.required && submitted">
                     Confirm Password is required
-                  </span>
-                  <span class="text-danger" *ngIf="myReactiveForm.get('confirmPassword')?.touched && myReactiveForm.get('confirmPassword').errors?.passwordMismatch">
+                  </small>
+                  <small class="text-danger" *ngIf="myReactiveForm.get('confirmPassword')?.touched && myReactiveForm.get('confirmPassword').errors?.passwordMismatch">
                     Passwords doesnot match
-                  </span>
+                  </small>
                 </div>
               </div>
+            
             </div>
+           
+            <label for="acceptTerms"> 
+              <input type="checkbox" formControlName="acceptTerms" id="acceptTerms"> <small> Accept Terms and condition</small> 
+            </label><br>
+            <small class="text-danger" *ngIf="myReactiveForm.get('acceptTerms')?.touched && myReactiveForm.get('acceptTerms').errors?.required
+            || myReactiveForm.get('acceptTerms').errors?.required && submitted">
+             Please Accept terms and condition
+          </small>
             <input type="submit" value="Register" class="btn btn-info btn-block">
           </form>
         </div>

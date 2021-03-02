@@ -8,27 +8,30 @@
         </div>
       </div>
       <div class="d-flex justify-content-center form_container">
-        <form>
+        <form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit()">
           <div class="input-group mb-3">
             <div class="input-group-append">
               <span class="input-group-text"><i class="fa fa-user"></i></span>
             </div>
-            <input type="text" name="" class="form-control input_user" value="" placeholder="username">
+            <input type="email" formControlName="email" id="email" class="form-control input-sm" placeholder="Email Address">
+            
           </div>
+          <p class="text-danger" *ngIf="submitted || myReactiveForm.get('email')?.errors?.required && myReactiveForm.get('email')?.touched">Email is required</p>
+            <p class="text-danger" *ngIf="myReactiveForm.get('email')?.errors?.email && myReactiveForm.get('email')?.touched">Please Enter correct Email Address</p>
           <div class="input-group mb-2">
             <div class="input-group-append">
               <span class="input-group-text"><i class="fa fa-key"></i></span>
             </div>
-            <input type="password" name="" class="form-control input_pass" value="" placeholder="password">
+            <input type="password" formControlName="password" name="password" class="form-control input_pass" value="" placeholder="password">
           </div>
-          <div class="form-group">
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="customControlInline">
-              <label class="custom-control-label" for="customControlInline">Remember me</label>
-            </div>
-          </div>
+          <span class="text-danger" *ngIf="submitted || myReactiveForm.get('password')?.touched && myReactiveForm.get('password')?.errors?.required">
+            Password is required
+          </span>
+          <span class="text-danger" *ngIf="myReactiveForm.get('password')?.errors?.invalidPassword">
+            Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number
+          </span>
             <div class="d-flex justify-content-center mt-3 login_container">
-         <button type="button" name="button" class="btn login_btn">Login</button>
+         <button type="submit" name="button" class="btn login_btn">Login</button>
          </div>
         </form>
       </div>
@@ -36,9 +39,6 @@
       <div class="mt-4">
         <div class="d-flex justify-content-center links">
           Don't have an account? <a href="#" routerLink="/signup" class="ml-2">Sign Up</a>
-        </div>
-        <div class="d-flex justify-content-center links">
-          <a href="#">Forgot your password?</a>
         </div>
       </div>
     </div>

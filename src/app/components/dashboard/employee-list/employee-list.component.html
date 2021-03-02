@@ -5,6 +5,11 @@
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
+      <th scope="col">Branch State (Pincode)</th>
+      <th scope="col">Date of joining</th>
+      <th scope="col">Employee Verified</th>
+      <th scope="col">Employee Update</th>
+      <th scope="col">Employee Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -13,6 +18,11 @@
       <td>{{emp.firstName}}</td>
       <td>{{emp.lastName}}</td>
       <td>{{emp.email}}</td>
+      <td>{{emp.branchState}}({{emp.zipCode}})</td>
+      <td>{{emp.dateOfJoining | date: 'longDate'}}</td>
+      <td>{{emp.employeeVerified ? 'Yes' : 'No'}}</td>
+      <td><i (click)="updateEmployeeList(emp._id)" class="fa fa-pencil text-success"></i></td>
+      <td><i (click)="deleteEmployeeList(emp._id)" class="fa fa-trash text-danger"></i></td>
     </tr>
   </tbody>
 </table>

@@ -11,6 +11,7 @@ export class UtilsService {
 
   linkGeneration(host,port,apiPrefix, url) {
     let urlLink = `http://${host}:${port}${apiPrefix}${url}`;
+    if (environment.production) urlLink = `https://${host}${apiPrefix}${url}`;
     return urlLink;
   }
 }
