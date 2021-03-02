@@ -3,7 +3,8 @@
     <div class="col-sm-8">
       <div class="card">
         <div class="card-body">
-          <div class="card-title text-center text-success"><h1>Add Employee <i class="fa fa-2x fa-user"></i></h1></div>
+          <div *ngIf="!toUpdate" class="card-title text-center text-success"><h1>Add Employee <i class="fa fa-2x fa-user"></i></h1></div>
+          <div *ngIf="toUpdate" class="card-title text-center text-success"><h1>Update Employee <i class="fa fa-2x fa-user"></i></h1></div>
           <div class="card-text" *ngIf="myReactiveForm">
             <form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit()">
               <div class="form-row">
